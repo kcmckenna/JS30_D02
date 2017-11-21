@@ -71,7 +71,21 @@
   </style>
 
   <script>
+    const secondHand = document.querySelector('.second-hand');
 
+    function setDate() {
+      const now = new Date();
+      // built-in function for counting to 60 seconds
+      const seconds = now.getSeconds();
+      // creates the position for the hands based on the circumfrence of the circle.
+      const secondsDegrees = ((seconds / 60) * 360) + 90;
+      // add 90 so it starts the seconds timer at top of circle (zero seconds)
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+      console.log(seconds);
+    }
+
+    setInterval(setDate, 1000);
 
   </script>
 </body>
