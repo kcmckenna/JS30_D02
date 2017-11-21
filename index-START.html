@@ -72,6 +72,8 @@
 
   <script>
     const secondHand = document.querySelector('.second-hand');
+    const minuteHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
 
     function setDate() {
       const now = new Date();
@@ -82,7 +84,16 @@
       // add 90 so it starts the seconds timer at top of circle (zero seconds)
       secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
 
-      console.log(seconds);
+      const minutes = now.getMinutes();
+      const minutesDegrees = ((minutes / 60) * 360) + 90;
+      minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+
+      const hours = now.getHours();
+      const hoursDegrees = ((hours / 12) * 360) +90;
+      hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+
+      console.log(seconds, minutes, hours);
     }
 
     setInterval(setDate, 1000);
